@@ -82,3 +82,5 @@ mopdf_premium_pdf_toolkit.backup.tsx
 src.phase0.backup/
 qa-downloads/
 qa-fixtures/
+audit-screenshots/
+audit-results.json

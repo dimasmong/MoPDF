@@ -1480,6 +1480,8 @@ export default function App() {
       ctx.textBaseline = 'middle';
       ctx.fillText(signTypedName.trim(), 24, 90);
       sigDataUrlToUse = canvas.toDataURL('image/png');
+    } else if (signMethod === 'draw' && signatureCanvasRef.current) {
+      sigDataUrlToUse = signatureCanvasRef.current.toDataURL('image/png');
     }
 
     if (!sigDataUrlToUse) {
@@ -2071,6 +2073,32 @@ export default function App() {
     }
   };
 
+  const handleSignatureTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    const canvas = signatureCanvasRef.current;
+    if (!canvas || !e.touches[0]) return;
+    const rect = canvas.getBoundingClientRect();
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    setIsDrawingSig(true);
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#18181B';
+    ctx.beginPath();
+    ctx.moveTo(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+  };
+
+  const handleSignatureTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!isDrawingSig) return;
+    const canvas = signatureCanvasRef.current;
+    if (!canvas || !e.touches[0]) return;
+    const rect = canvas.getBoundingClientRect();
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.lineTo(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top);
+    ctx.stroke();
+  };
+
   const clearSignatureCanvas = () => {
     const canvas = signatureCanvasRef.current;
     if (canvas) {
@@ -2336,6 +2364,20 @@ export default function App() {
                 <Sparkles className="w-4 h-4 text-[#E53935]" />
                 <span>{t.nav.samplePdf}</span>
               </button>
+              <a
+                href={GITHUB_REPO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`w-full py-2.5 px-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border ${
+                  theme === 'dark'
+                    ? 'bg-zinc-800 border-zinc-700 text-zinc-200'
+                    : 'bg-white border-zinc-200 text-zinc-800'
+                }`}
+              >
+                <Github className="w-4 h-4" />
+                <span>GitHub</span>
+              </a>
             </div>
           )}
         </nav>
@@ -4080,6 +4122,10 @@ export default function App() {
                           onMouseMove={handleSignatureMouseMove}
                           onMouseUp={handleSignatureMouseUp}
                           onMouseLeave={handleSignatureMouseUp}
+                          onTouchStart={handleSignatureTouchStart}
+                          onTouchMove={handleSignatureTouchMove}
+                          onTouchEnd={handleSignatureMouseUp}
+                          onTouchCancel={handleSignatureMouseUp}
                           className="w-full h-[140px] cursor-crosshair touch-none"
                         />
                       </div>
