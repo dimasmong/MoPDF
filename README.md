@@ -125,6 +125,14 @@ Run the 14-tool programmatic validation suite:
 npm test
 ```
 
+### End-to-End Browser Quality Assurance Suite
+
+Run the comprehensive Headless Chrome E2E test suite across all 14 tools, verifying UI interactions, downloads, layout responsiveness, and zero network leaks:
+
+```bash
+npm run test:e2e
+```
+
 ### Type Checking
 
 Verify TypeScript compilation without emitting files:

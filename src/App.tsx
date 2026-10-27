@@ -2458,7 +2458,7 @@ export default function App() {
           </div>
 
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 mb-6">
+          <div role="tablist" aria-label="Tool Categories" className="flex flex-wrap items-center gap-2 mb-6">
             {(['all', 'organize', 'optimize', 'convert', 'edit-sign', 'info'] as CategoryId[]).map((catId) => {
               const count = catId === 'all' ? TOOLS_LIST.length : TOOLS_LIST.filter((tool) => tool.category === catId).length;
               const isSelected = selectedCategory === catId;
@@ -2467,6 +2467,8 @@ export default function App() {
                 <button
                   key={catId}
                   type="button"
+                  role="tab"
+                  aria-selected={isSelected}
                   onClick={() => setSelectedCategory(catId)}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all ${
                     isSelected
@@ -3371,7 +3373,7 @@ export default function App() {
                         }`}
                       >
                         <p className="font-bold text-sm text-[#E53935]">{t.toolControls.compressModeLossless}</p>
-                        <p className="text-xs mt-1 opacity-75">Compacts cross-reference object streams and strips unreferenced artifacts.</p>
+                        <p className="text-xs mt-1 opacity-75">{t.toolControls.compressModeLosslessDesc}</p>
                       </button>
 
                       <button
@@ -3384,7 +3386,7 @@ export default function App() {
                         }`}
                       >
                         <p className="font-bold text-sm text-[#E53935]">{t.toolControls.compressModeMax}</p>
-                        <p className="text-xs mt-1 opacity-75">Deep stream compression with optimal buffer repackaging.</p>
+                        <p className="text-xs mt-1 opacity-75">{t.toolControls.compressModeMaxDesc}</p>
                       </button>
                     </div>
                   </div>
@@ -3405,11 +3407,24 @@ export default function App() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold opacity-70">{t.toolControls.compressReductionLabel}</p>
-                      <p className="text-base sm:text-lg font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5">
+                      <p className={`text-base sm:text-lg font-extrabold mt-0.5 ${
+                        compressStats && compressStats.reductionPct > 0
+                          ? 'text-emerald-600 dark:text-emerald-400'
+                          : compressStats
+                          ? 'text-amber-600 dark:text-amber-400'
+                          : 'text-emerald-600 dark:text-emerald-400'
+                      }`}>
                         {compressStats ? `${compressStats.reductionPct}%` : '—'}
                       </p>
                     </div>
                   </div>
+
+                  {compressStats && compressStats.reductionPct === 0 && (
+                    <div className="p-3.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-800 dark:text-amber-300 text-xs font-medium flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-amber-500 mt-0.5" />
+                      <span>{t.toolControls.compressAlreadyOptimized}</span>
+                    </div>
+                  )}
 
                   <p className="text-xs opacity-75 leading-relaxed">{t.toolControls.compressDisclaimer}</p>
 
@@ -4242,7 +4257,7 @@ export default function App() {
                             {signTypedName}
                           </span>
                         ) : (
-                          <span className="text-[10px] text-[#E53935] font-semibold px-2 py-0.5">Signature Placement</span>
+                          <span className="text-[10px] text-[#E53935] font-semibold px-2 py-0.5">{t.toolControls.signPlacementPlaceholder}</span>
                         )}
                       </div>
                     </div>

@@ -312,7 +312,9 @@ export const TRANSLATIONS: Record<'en' | 'id', Translation> = {
       // Compress [NEW]
       compressLevelLabel: 'Optimization Mode',
       compressModeLossless: 'Lossless Structural Optimization (Preserves 100% Quality)',
+      compressModeLosslessDesc: 'Compacts cross-reference object streams and strips unreferenced artifacts without rasterization.',
       compressModeMax: 'Enhanced Stream Compaction',
+      compressModeMaxDesc: 'Deep stream compression with optimal object packaging, preserving vector text and graphics.',
       compressOrigSizeLabel: 'Original File Size',
       compressNewSizeLabel: 'Optimized File Size',
       compressReductionLabel: 'Reduction Achieved',
@@ -422,6 +424,7 @@ export const TRANSLATIONS: Record<'en' | 'id', Translation> = {
       signDisclaimer: 'Important: This tool stamps a visual electronic signature onto the document page. It does not constitute a certificate-backed cryptographic digital signature (PKI/X.509).',
       signApplyBtn: 'Stamp Signature & Export PDF',
       signLivePreview: 'Live Signature Placement Preview',
+      signPlacementPlaceholder: 'Signature Placement',
 
       // Images to PDF
       imgPageSize: 'Page Size',
@@ -736,7 +739,9 @@ export const TRANSLATIONS: Record<'en' | 'id', Translation> = {
       // Compress [NEW]
       compressLevelLabel: 'Mode Optimasi',
       compressModeLossless: 'Optimasi Struktur Lossless (Kualitas 100% Terjaga)',
+      compressModeLosslessDesc: 'Memadatkan aliran objek cross-reference dan membersihkan artefak yang tidak dirujuk tanpa rasterisasi.',
       compressModeMax: 'Pemadatan Aliran Data Ekstra',
+      compressModeMaxDesc: 'Kompresi aliran mendalam dengan pengemasan objek optimal, menjaga ketajaman teks vektor dan grafis.',
       compressOrigSizeLabel: 'Ukuran Awal File',
       compressNewSizeLabel: 'Ukuran Setelah Optimasi',
       compressReductionLabel: 'Pengurangan Ukuran',
@@ -846,6 +851,7 @@ export const TRANSLATIONS: Record<'en' | 'id', Translation> = {
       signDisclaimer: 'Penting: Fitur ini menyematkan tanda tangan visual pada halaman dokumen. Ini bukan tanda tangan digital berbasis sertifikat kriptografi (PKI/X.509).',
       signApplyBtn: 'Sematkan Tanda Tangan & Ekspor PDF',
       signLivePreview: 'Pratinjau Penempatan Tanda Tangan',
+      signPlacementPlaceholder: 'Penempatan Tanda Tangan',
 
       // Images to PDF
       imgPageSize: 'Ukuran Halaman',
