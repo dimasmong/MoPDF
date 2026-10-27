@@ -84,3 +84,5 @@ qa-downloads/
 qa-fixtures/
 audit-screenshots/
 audit-results.json
+
+mopdf_premium_pdf_toolkit.tsx
