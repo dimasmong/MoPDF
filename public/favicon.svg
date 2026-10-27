@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="mopdf-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF4D4F"/>
+      <stop offset="55%" stop-color="#E53935"/>
+      <stop offset="100%" stop-color="#C62828"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#mopdf-grad)"/>
+  <path d="M14 12C14 10.8954 14.8954 10 16 10H26L34 18V36C34 37.1046 33.1046 38 32 38H16C14.8954 38 14 37.1046 14 36V12Z" fill="white" fill-opacity="0.95"/>
+  <path d="M26 10V18H34" fill="#FFE4E6"/>
+  <rect x="18" y="22" width="12" height="2" rx="1" fill="#E53935"/>
+  <rect x="18" y="26" width="12" height="2" rx="1" fill="#E53935"/>
+  <rect x="18" y="30" width="8" height="2" rx="1" fill="#E53935"/>
+</svg>
